@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,20 +9,22 @@ namespace TypingAdventureProgram
 {
     class Level
     {
-        public bool isUnlocked{get;}
-        public bool runLevel(string text, float time)
+        public bool isUnlocked{get; set;}
+        public bool RunLevel(string text, double time)
         {
             string userInput = "";
             Console.WriteLine(text);
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
             // Get user input
-            while(userInput != text&&time>0)
+            while(userInput != text&&timer.Elapsed.TotalSeconds>time)
             {
                 userInput = Console.ReadLine();
                 // Decrease time by seconds
-                Console.WriteLine("Time left: " + time);
-                Thread.Sleep(1000);
-                time--;
+                Console.WriteLine("Time left: " +(time-timer.Elapsed.TotalSeconds));   
             }
+
+            // Display win or lose message
 
             if(userInput == text)
             {
@@ -38,9 +41,9 @@ namespace TypingAdventureProgram
             isUnlocked = true;
         }
 
-        public bool runLevel()
+        public bool RunLevel()
         {
-            // Run level 1
+            return true;// Run level 1
         }
     }
 
@@ -51,9 +54,9 @@ namespace TypingAdventureProgram
             isUnlocked = false;
         }
 
-        public bool runLevel(string text, float time)
+        public bool RunLevel()
         {
-            // Run level 2
+            return true;// Run level 2
         }
     }
 
@@ -64,9 +67,9 @@ namespace TypingAdventureProgram
             isUnlocked = false;
         }
 
-        public bool runLevel(string text, float time)
+        public bool RunLevel()
         {
-            // Run level 3
+            return true;// Run level 3
         }
     }
 }
