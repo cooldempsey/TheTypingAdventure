@@ -48,9 +48,8 @@ namespace TypingAdventureProgram
             }
 
             // Display win or lose message
-            if(userInput == text)
+            if (userInput == text)
             {
-                DisplayScreen.WinScreen(MainProgram.currLevel);
                 return true;
             }
             DisplayScreen.LoseScreen();
@@ -68,7 +67,13 @@ namespace TypingAdventureProgram
         public static bool RunLevel()
         {
             Random random = new Random();
-            return RunLevel(Level1Info.levels[random.Next(0,Level1Info.levels.Count)], 80);
+            if (RunLevel(Level1Info.levels[random.Next(0, Level1Info.levels.Count)], 80))
+            {
+                DisplayScreen.WinScreen(1);
+                return true;
+            }
+            DisplayScreen.LoseScreen();
+            return false;
         }
     }
 
@@ -82,7 +87,13 @@ namespace TypingAdventureProgram
         public static bool RunLevel()
         {
             Random random = new Random();
-            return RunLevel(Level2Info.levels[random.Next(0,Level2Info.levels.Count)], 10);
+            if (RunLevel(Level2Info.levels[random.Next(0,Level2Info.levels.Count)], 10))
+            {
+                DisplayScreen.WinScreen(2);
+                return true;
+            }
+            DisplayScreen.LoseScreen();
+            return false;
         }
     }
 
@@ -96,7 +107,13 @@ namespace TypingAdventureProgram
         public static bool RunLevel()
         {
             Random random = new Random();
-            return RunLevel(Level3Info.levels[random.Next(0,Level3Info.levels.Count)], 12);
+            if (RunLevel(Level3Info.levels[random.Next(0,Level3Info.levels.Count)], 12))
+            {
+                DisplayScreen.WinScreen(3);
+                return true;
+            }
+            DisplayScreen.LoseScreen();
+            return false;
         }
     }
 }

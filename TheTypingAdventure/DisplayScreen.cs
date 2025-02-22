@@ -37,18 +37,21 @@ namespace TypingAdventureProgram
 
         public static void LoseScreen()
         {
+            newScreen();
             Console.WriteLine("You lost!");
             PressKeyToContinue();
         }
 
         public static void WinScreen(int level)
         {
+            newScreen();
             Console.WriteLine($"You have completed level {level}!");
             PressKeyToContinue();
         }
 
         public static void GameCompletedScreen()
         {
+            newScreen();
             Console.WriteLine("Congrats!! You have completed the game!");
             PressKeyToContinue();
         }
