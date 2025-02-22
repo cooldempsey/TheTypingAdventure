@@ -43,7 +43,8 @@ namespace TypingAdventureProgram
 
         public bool RunLevel()
         {
-            return true;// Run level 1
+            Random random = new Random();
+            return RunLevel(Level1Info.levels[random.Next(0,Level1Info.levels.Count)], 8);
         }
     }
 
@@ -56,7 +57,8 @@ namespace TypingAdventureProgram
 
         public bool RunLevel()
         {
-            return true;// Run level 2
+            Random random = new Random();
+            return RunLevel(Level2Info.levels[random.Next(0,Level2Info.levels.Count)], 10);
         }
     }
 
@@ -69,7 +71,8 @@ namespace TypingAdventureProgram
 
         public bool RunLevel()
         {
-            return true;// Run level 3
+            Random random = new Random();
+            return RunLevel(Level3Info.levels[random.Next(0,Level3Info.levels.Count)], 12);
         }
     }
 }
