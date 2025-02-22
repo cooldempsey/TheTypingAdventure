@@ -61,7 +61,6 @@ namespace TypingAdventureProgram
             {
                 return true;
             }
-            DisplayScreen.LoseScreen();
             return false;
         }
     }
