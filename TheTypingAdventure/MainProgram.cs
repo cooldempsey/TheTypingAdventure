@@ -15,13 +15,13 @@ namespace TypingAdventureProgram
         public static void Main(string[] args)
         {
             // Load any save data
-            SaveFile.LoadFile();
+            FileStorer.LoadFile();
 
             // Run main menu until user quits
             MainMenu();
 
             // Save any save data
-            SaveFile.SaveFile();
+            FileStorer.SaveFile();
         }
 
         public static void MainMenu()

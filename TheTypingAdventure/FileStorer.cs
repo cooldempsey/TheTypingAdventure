@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TypingAdventureProgram
 {
-    static class SaveFile
+    static class FileStorer
     {
         public const string FILE_NAME = "saveFile.txt";
 
