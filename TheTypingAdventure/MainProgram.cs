@@ -23,6 +23,9 @@ namespace TypingAdventureProgram
 
             // Save any save data
             FileStorer.SaveFile();
+
+            // Give quitting message
+            DisplayScreen.GameQuit();
         }
 
         public static void MainMenu()
@@ -30,28 +33,33 @@ namespace TypingAdventureProgram
             int levelOpt = 0; // Level currently selected
             ConsoleKey pressedKey; // Key most recently pressed by user
 
-            // Get level user input
+            // Run MainMenu until the user chooses to quit
             do
             {
-                DisplayScreen.MainMenu(levelOpt);
+                // Get level user input
                 do
                 {
-                    pressedKey = Console.ReadKey(true).Key;
-                } while (pressedKey != ConsoleKey.LeftArrow && pressedKey != ConsoleKey.RightArrow && pressedKey != ConsoleKey.Enter);
+                    DisplayScreen.MainMenu(levelOpt);
+                    do
+                    {
+                        pressedKey = Console.ReadKey(true).Key;
+                    } while (pressedKey != ConsoleKey.LeftArrow && pressedKey != ConsoleKey.RightArrow && pressedKey != ConsoleKey.Enter && pressedKey != ConsoleKey.Q);
 
-                if (pressedKey == ConsoleKey.LeftArrow)
-                    levelOpt = levelOpt > 0 ? levelOpt - 1 : NUM_LEVELS - 1;
-                else if (pressedKey == ConsoleKey.RightArrow)
-                    levelOpt = (levelOpt + 1) % NUM_LEVELS;
-            } while (pressedKey != ConsoleKey.Enter);
+                    if (pressedKey == ConsoleKey.LeftArrow)
+                        levelOpt = levelOpt > 0 ? levelOpt - 1 : currLevel - 1;
+                    else if (pressedKey == ConsoleKey.RightArrow)
+                        levelOpt = (levelOpt + 1) % currLevel;
+                } while (pressedKey != ConsoleKey.Enter && pressedKey != ConsoleKey.Q);
 
-            // Send user to level
-            switch (levelOpt)
-            {
-                case 0: if (Level1.RunLevel() && currLevel == 1) { currLevel++; }; break;
-                case 1: if (Level2.RunLevel() && currLevel == 2) { currLevel++; }; break;
-                case 2: if (Level3.RunLevel()) { DisplayScreen.GameCompletedScreen(); }; break;
-            }
+                // Send user to level
+                if (pressedKey != ConsoleKey.Q)
+                    switch (levelOpt)
+                    {
+                        case 0: if (Level1.RunLevel() && currLevel == 1) { currLevel++; }; break;
+                        case 1: if (Level2.RunLevel() && currLevel == 2) { currLevel++; }; break;
+                        case 2: if (Level3.RunLevel()) { DisplayScreen.GameCompletedScreen(); }; break;
+                    }
+            } while (pressedKey != ConsoleKey.Q);
         }
     }
 }

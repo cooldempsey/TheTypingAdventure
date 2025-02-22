@@ -18,8 +18,13 @@ namespace TypingAdventureProgram
                 {
                     Console.Write(">");
                 }
+                if (i > MainProgram.currLevel - 1)
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                else
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write($"Level {i + 1}  ");
             }
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public static void Level(string challengeText, string userText, double remainingTime)
@@ -41,6 +46,11 @@ namespace TypingAdventureProgram
         }
 
         public static void GameCompletedScreen()
+        {
+
+        }
+
+        public static void GameQuit()
         {
 
         }
