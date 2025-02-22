@@ -26,8 +26,8 @@ namespace TypingAdventureProgram
         {
             newScreen();
             Console.WriteLine(challengeText + "\n");
-            Console.WriteLine(userText);
-            Console.WriteLine("Time left: " + remainingTime);
+            Console.WriteLine("Time left: " + remainingTime + "\n");
+            Console.Write(userText);
         }
 
         public static void LoseScreen()

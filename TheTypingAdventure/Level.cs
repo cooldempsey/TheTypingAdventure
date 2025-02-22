@@ -10,14 +10,18 @@ namespace TypingAdventureProgram
 {
     abstract class Level
     {
+        public const double TIME_BEFORE_PRINT = 0.3;
+
         public bool isUnlocked{get; set;}
 
         public static bool RunLevel(string text, double time)
         {
+            double prevTime = -TIME_BEFORE_PRINT;
             string userInput = "";
             Console.WriteLine(text);
             Stopwatch timer = new Stopwatch();
             timer.Start();
+
             // Get user input
             while (userInput != text && timer.Elapsed.TotalSeconds<=time)
             {
@@ -26,7 +30,11 @@ namespace TypingAdventureProgram
                     userInput += Console.ReadKey().KeyChar;
                 }
                 // Decrease time by seconds
-                DisplayScreen.Level(text, userInput, time - timer.Elapsed.TotalSeconds);
+                if (timer.Elapsed.TotalSeconds > prevTime + TIME_BEFORE_PRINT)
+                {
+                    prevTime = timer.Elapsed.TotalSeconds;
+                    DisplayScreen.Level(text, userInput, time - timer.Elapsed.TotalSeconds);
+                }
             }
 
             // Display win or lose message

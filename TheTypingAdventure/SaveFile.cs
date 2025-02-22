@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace TypingAdventureProgram
 {
-    class SaveFile
+    static class SaveFile
     {
         public const string FILE_NAME = "saveFile.txt";
 
-        public void saveFile()
+        public static void SaveFile()
         {
 
         }
 
-        public void loadFile()
+        public static void LoadFile()
         {
 
         }
 
-        public void deleteFile()
+        public static void DeleteFile()
         {
 
         }
