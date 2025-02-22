@@ -18,6 +18,9 @@ namespace TypingAdventureProgram
             // Load any save data
             FileStorer.LoadFile();
 
+            // Display welcome screen
+            DisplayScreen.WelcomeScreen();
+
             // Run main menu until user quits
             MainMenu();
 

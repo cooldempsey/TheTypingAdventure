@@ -8,9 +8,19 @@ namespace TypingAdventureProgram
 {
     static class DisplayScreen
     {
+        public static void WelcomeScreen()
+        {
+            newScreen();
+            Console.WriteLine("Welcome to The Typing Adventure!\n");
+            Console.WriteLine("In this game, you will be given a challenge to type out a paragraph as fast as you can. You will be timed, and you will have to type out the sentence before the time runs out. If you succeed, you will move on to the next level. If you fail, you will have to try again.\n");
+            Console.WriteLine("Good luck!\n");
+            PressKeyToContinue();
+        }
+
         public static void MainMenu(int levelSelection)
         {
             newScreen();
+            Console.WriteLine("Press the left and right arrow keys to select a level, and press Enter to start the level. Press Q to quit the game.\n");
             Console.WriteLine("Choose your level:");
             for (int i = 0; i < MainProgram.NUM_LEVELS; i++)
             {
@@ -72,7 +82,8 @@ namespace TypingAdventureProgram
 
         public static void GameQuit()
         {
-
+            newScreen();
+            Console.WriteLine("Thank you for playing!");
         }
 
         private static void PressKeyToContinue()
