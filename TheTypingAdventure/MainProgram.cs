@@ -10,7 +10,7 @@ namespace TypingAdventureProgram
     {
         public const int NUM_LEVELS = 3; // Total number of levels in the game
 
-        private static int currLevel = 1; // Current level that the user is on; default is 1
+        public static int currLevel = 1; // Current level that the user is on; default is 1
 
         public static void Main(string[] args)
         {
