@@ -19,7 +19,7 @@ namespace TypingAdventureProgram
                 userInput = Console.ReadLine();
                 // Decrease time by seconds
                 Console.WriteLine("Time left: " + time);
-                Thread.sleep(1000);
+                Thread.Sleep(1000);
                 time--;
             }
 
@@ -38,7 +38,7 @@ namespace TypingAdventureProgram
             isUnlocked = true;
         }
 
-        public bool runLevel(string text, float time)
+        public bool runLevel()
         {
             // Run level 1
         }

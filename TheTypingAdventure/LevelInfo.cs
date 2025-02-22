@@ -8,7 +8,7 @@ namespace TypingAdventureProgram
 {
     abstract class LevelInfo
     {
-        protected List<string> levels = new List<string>();
+        public List<string> levels = new List<string>();
         public LevelInfo()
         {
 
