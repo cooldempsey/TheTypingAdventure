@@ -30,9 +30,23 @@ namespace TypingAdventureProgram
         public static void Level(string challengeText, string userText, double remainingTime)
         {
             newScreen();
-            Console.WriteLine(challengeText + "\n");
+
+            // Give time remaining
             Console.WriteLine("Time left: " + remainingTime + "\n");
-            Console.Write(userText);
+
+            // Write challengeText with userText overtop of it. Put red characters starting at the first mistake
+            (int left, int top) pos = Console.GetCursorPosition();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write(challengeText);
+            Console.SetCursorPosition(0, Console.WindowHeight - (challengeText.Length / Console.WindowWidth) - 1);
+            Console.ForegroundColor = ConsoleColor.Gray;
+            for (int i = 0; i < userText.Length; i++)
+            {
+                if (i > challengeText.Length - 1 || userText.ElementAt(i) != challengeText.ElementAt(i))
+                    Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(userText.ElementAt(i));
+            }
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public static void LoseScreen()
