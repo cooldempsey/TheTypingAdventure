@@ -10,7 +10,7 @@ namespace TypingAdventureProgram
     {
         public const int NUM_LEVELS = 3; // Total number of levels in the game
 
-        private int currLevel = 1; // Current level that the user is on; default is 1
+        private static int currLevel = 1; // Current level that the user is on; default is 1
 
         public static void Main(string[] args)
         {
@@ -27,6 +27,7 @@ namespace TypingAdventureProgram
             int levelOpt = 0; // Level currently selected
             ConsoleKey pressedKey; // Key most recently pressed by user
 
+            // Get level user input
             do
             {
                 DisplayScreen.MainMenu(levelOpt);
@@ -40,6 +41,14 @@ namespace TypingAdventureProgram
                 else if (pressedKey == ConsoleKey.RightArrow)
                     levelOpt = (levelOpt + 1) % NUM_LEVELS;
             } while (pressedKey != ConsoleKey.Enter);
+
+            // Send user to level
+            switch (levelOpt)
+            {
+                case 0: if (Level1.RunLevel() && currLevel == 1) { currLevel++; }; break;
+                case 1: if (Level2.RunLevel() && currLevel == 2) { currLevel++; }; break;
+                case 2: if (Level3.RunLevel()) { DisplayScreen.GameCompletedScreen(); }; break;
+            }
         }
     }
 }

@@ -18,13 +18,16 @@ namespace TypingAdventureProgram
                 {
                     Console.Write(">");
                 }
-                Console.Write($"Level {i}  ");
+                Console.Write($"Level {i + 1}  ");
             }
         }
 
-        public static void DisplayLevel(string challengeText, string userText, float remainingTime)
+        public static void Level(string challengeText, string userText, double remainingTime)
         {
-            
+            newScreen();
+            Console.WriteLine(challengeText + "\n");
+            Console.WriteLine(userText);
+            Console.WriteLine("Time left: " + remainingTime);
         }
 
         public static void LoseScreen()
@@ -33,6 +36,11 @@ namespace TypingAdventureProgram
         }
 
         public static void WinScreen()
+        {
+
+        }
+
+        public static void GameCompletedScreen()
         {
 
         }

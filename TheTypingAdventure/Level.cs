@@ -26,9 +26,7 @@ namespace TypingAdventureProgram
                     userInput += Console.ReadKey().KeyChar;
                 }
                 // Decrease time by seconds
-                Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-                Console.WriteLine(userInput);
-                Console.WriteLine("Time left: " + (time - timer.Elapsed.TotalSeconds));   
+                DisplayScreen.Level(text, userInput, time - timer.Elapsed.TotalSeconds);
             }
 
             // Display win or lose message
@@ -48,10 +46,10 @@ namespace TypingAdventureProgram
             isUnlocked = true;
         }
 
-        public bool RunLevel()
+        public static bool RunLevel()
         {
             Random random = new Random();
-            return RunLevel(Level1Info.levels[random.Next(0,Level1Info.levels.Count)], 8);
+            return RunLevel(Level1Info.levels[random.Next(0,Level1Info.levels.Count)], 80);
         }
     }
 
@@ -62,7 +60,7 @@ namespace TypingAdventureProgram
             isUnlocked = false;
         }
 
-        public bool RunLevel()
+        public static bool RunLevel()
         {
             Random random = new Random();
             return RunLevel(Level2Info.levels[random.Next(0,Level2Info.levels.Count)], 10);
@@ -76,7 +74,7 @@ namespace TypingAdventureProgram
             isUnlocked = false;
         }
 
-        public bool RunLevel()
+        public static bool RunLevel()
         {
             Random random = new Random();
             return RunLevel(Level3Info.levels[random.Next(0,Level3Info.levels.Count)], 12);
