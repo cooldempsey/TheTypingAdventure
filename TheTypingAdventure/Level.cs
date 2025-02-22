@@ -3,25 +3,32 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using System.Threading.Tasks;
 
 namespace TypingAdventureProgram
 {
-    class Level
+    abstract class Level
     {
         public bool isUnlocked{get; set;}
-        public bool RunLevel(string text, double time)
+
+        public static bool RunLevel(string text, double time)
         {
             string userInput = "";
             Console.WriteLine(text);
             Stopwatch timer = new Stopwatch();
             timer.Start();
             // Get user input
-            while(userInput != text&&timer.Elapsed.TotalSeconds>time)
+            while (userInput != text && timer.Elapsed.TotalSeconds<=time)
             {
-                userInput = Console.ReadLine();
+                if (Console.KeyAvailable)
+                {
+                    userInput += Console.ReadKey().KeyChar;
+                }
                 // Decrease time by seconds
-                Console.WriteLine("Time left: " +(time-timer.Elapsed.TotalSeconds));   
+                Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                Console.WriteLine(userInput);
+                Console.WriteLine("Time left: " + (time - timer.Elapsed.TotalSeconds));   
             }
 
             // Display win or lose message
