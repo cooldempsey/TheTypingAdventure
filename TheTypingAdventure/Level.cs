@@ -16,33 +16,44 @@ namespace TypingAdventureProgram
 
         public static bool RunLevel(string text, double time)
         {
-            double prevTime = -TIME_BEFORE_PRINT;
-            string userInput = "";
-            Console.WriteLine(text);
-            Stopwatch timer = new Stopwatch();
+            double prevPrintTime = -TIME_BEFORE_PRINT; // Previous time a print has been made (starts at -TIME_BEFORE_PRINT to print right away on start)
+            string userInput = ""; // User input so far
+            ConsoleKeyInfo newKey; // Next key inputted by user
+            Stopwatch timer = new Stopwatch(); // Timer to figure out when time is up
+
+            // Start the timer
             timer.Start();
 
-            // Get user input
+            // Get user input until they succeed or time runs out
             while (userInput != text && timer.Elapsed.TotalSeconds<=time)
             {
                 if (Console.KeyAvailable)
                 {
-                    userInput += Console.ReadKey().KeyChar;
+                    newKey = Console.ReadKey();
+                    if (newKey.Key == ConsoleKey.Backspace && userInput.Length != 0)
+                    {
+                        userInput = userInput.Remove(userInput.Length - 1);
+                        Console.Write(" ");
+                        Console.CursorLeft--;
+                    }
+                    else if (MainProgram.ALLOWED_CHARS.Contains(newKey.KeyChar))
+                        userInput += newKey.KeyChar;
                 }
                 // Decrease time by seconds
-                if (timer.Elapsed.TotalSeconds > prevTime + TIME_BEFORE_PRINT)
+                if (timer.Elapsed.TotalSeconds > prevPrintTime + TIME_BEFORE_PRINT)
                 {
-                    prevTime = timer.Elapsed.TotalSeconds;
+                    prevPrintTime = timer.Elapsed.TotalSeconds;
                     DisplayScreen.Level(text, userInput, time - timer.Elapsed.TotalSeconds);
                 }
             }
 
             // Display win or lose message
-
             if(userInput == text)
             {
+                DisplayScreen.WinScreen();
                 return true;
             }
+            DisplayScreen.LoseScreen();
             return false;
         }
     }

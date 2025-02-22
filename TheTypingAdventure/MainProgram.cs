@@ -9,6 +9,7 @@ namespace TypingAdventureProgram
     class MainProgram
     {
         public const int NUM_LEVELS = 3; // Total number of levels in the game
+        public const string ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~`!@#$%^&*()-_=+[{]}\\|;:'\",<.>/? "; // String containing all of the allowed characters for strings to have
 
         private static int currLevel = 1; // Current level that the user is on; default is 1
 
