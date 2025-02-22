@@ -50,7 +50,7 @@ namespace TypingAdventureProgram
             // Display win or lose message
             if(userInput == text)
             {
-                DisplayScreen.WinScreen();
+                DisplayScreen.WinScreen(MainProgram.currLevel);
                 return true;
             }
             DisplayScreen.LoseScreen();
