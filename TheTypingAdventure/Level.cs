@@ -29,15 +29,24 @@ namespace TypingAdventureProgram
             {
                 if (Console.KeyAvailable)
                 {
-                    newKey = Console.ReadKey();
+                    newKey = Console.ReadKey(true);
                     if (newKey.Key == ConsoleKey.Backspace && userInput.Length != 0)
                     {
                         userInput = userInput.Remove(userInput.Length - 1);
-                        Console.Write(" ");
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+                        Console.Write(text.ElementAt(userInput.Length));
+                        Console.ForegroundColor = ConsoleColor.Gray;
                         Console.CursorLeft--;
                     }
                     else if (MainProgram.ALLOWED_CHARS.Contains(newKey.KeyChar))
+                    {
                         userInput += newKey.KeyChar;
+                        if (userInput != text.Remove(userInput.Length))
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(newKey.KeyChar);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
                 }
                 // Decrease time by seconds
                 if (timer.Elapsed.TotalSeconds > prevPrintTime + TIME_BEFORE_PRINT)
