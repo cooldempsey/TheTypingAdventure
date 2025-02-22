@@ -17,9 +17,12 @@ namespace TypingAdventureProgram
             while(userInput != text&&time>0)
             {
                 userInput = Console.ReadLine();
-                time -= 0.1f;
+                // Decrease time by seconds
+                Console.WriteLine("Time left: " + time);
+                Thread.sleep(1000);
+                time--;
             }
-            
+
             if(userInput == text)
             {
                 return true;
